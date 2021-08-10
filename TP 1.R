@@ -104,12 +104,16 @@ campanasverdesxbarrio <- campanasverdes_barrio %>%
   summarise(cantidad=n())
 
 campanasverdesxbarrio
-#Vemos que en caballito hay 96 campanas, en Palermo 175 y en Recoleta 40
+
+campanasverdesxbarrio <- campanasverdesxbarrio %>% 
+  arrange(desc(cantidad))
+#Vemos de manera ordenada que en Palermo hay 175, en Caballito 96 y en Recoleta 40
 
 #Pivotear: Para girar la tabla. En este caso queremos evitar que aparezcan los datos ordenados por barrio y cantidad, queremos que directamente figuren el nombre de cada barrio y la cantidad correspondiente de campanas verdes
 campanasverdesxbarrio_ok <- campanasverdesxbarrio %>% 
   pivot_wider(names_from = "barrio",
               values_from = "cantidad")
+
 
 
 
